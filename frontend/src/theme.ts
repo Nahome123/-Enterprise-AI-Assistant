@@ -36,33 +36,34 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: [
-      "Geist Serif",
-      "Georgia",
-      "Times New Roman",
-      "serif",
+      "Aptos",
+      "Segoe UI",
+      "Roboto",
+      "Arial",
+      "sans-serif",
     ].join(","),
     h1: {
-      fontFamily: '"Geist Serif", Georgia, "Times New Roman", serif',
+      fontFamily: 'Aptos, "Segoe UI", Roboto, Arial, sans-serif',
       fontWeight: 900,
     },
     h2: {
-      fontFamily: '"Geist Serif", Georgia, "Times New Roman", serif',
+      fontFamily: 'Aptos, "Segoe UI", Roboto, Arial, sans-serif',
       fontWeight: 900,
     },
     h3: {
-      fontFamily: '"Geist Serif", Georgia, "Times New Roman", serif',
+      fontFamily: 'Aptos, "Segoe UI", Roboto, Arial, sans-serif',
       fontWeight: 900,
     },
     h4: {
-      fontFamily: '"Geist Serif", Georgia, "Times New Roman", serif',
+      fontFamily: 'Aptos, "Segoe UI", Roboto, Arial, sans-serif',
       fontWeight: 900,
     },
     h5: {
-      fontFamily: '"Geist Serif", Georgia, "Times New Roman", serif',
+      fontFamily: 'Aptos, "Segoe UI", Roboto, Arial, sans-serif',
       fontWeight: 900,
     },
     h6: {
-      fontFamily: '"Geist Serif", Georgia, "Times New Roman", serif',
+      fontFamily: 'Aptos, "Segoe UI", Roboto, Arial, sans-serif',
       fontWeight: 900,
     },
     subtitle1: {
