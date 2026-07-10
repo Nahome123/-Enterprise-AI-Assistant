@@ -475,6 +475,7 @@ function Login() {
             >
               <Stack spacing={1.25}>
                 <Stack direction="row" sx={{ alignItems: "center", gap: 1, flexWrap: "wrap" }}>
+                  <Chip label="Beta version" color="primary" variant="filled" size="small" />
                   <Chip label="RAG" color="primary" size="small" />
                   <Chip label="Trusted sources" color="secondary" variant="outlined" size="small" />
                   <Chip label="Permissions aware" variant="outlined" size="small" />

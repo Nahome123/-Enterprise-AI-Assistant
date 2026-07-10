@@ -60,15 +60,22 @@ function Navbar() {
               Illuminate Enterprise Knowledge.
             </Typography>
           </Box>
-          <Chip
-            label="Private"
-            size="small"
-            sx={{
-              display: { xs: "none", md: "inline-flex" },
-              bgcolor: "rgba(11, 61, 145, 0.12)",
-              color: "primary.dark",
-            }}
-          />
+          <Stack direction="row" spacing={1} sx={{ display: { xs: "none", md: "flex" } }}>
+            <Chip
+              label="Beta"
+              size="small"
+              color="primary"
+              sx={{ fontWeight: 850 }}
+            />
+            <Chip
+              label="Private"
+              size="small"
+              sx={{
+                bgcolor: "rgba(11, 61, 145, 0.12)",
+                color: "primary.dark",
+              }}
+            />
+          </Stack>
         </Stack>
         <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
           {navItems.map((item) => {
