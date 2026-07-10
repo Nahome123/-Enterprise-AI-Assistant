@@ -110,6 +110,54 @@ const theme = createTheme({
         variant: "outlined",
       },
     },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "rgba(7, 17, 31, 0.72)",
+          color: "#f8fafc",
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: "rgba(182, 194, 210, 0.36)",
+          },
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: "rgba(96, 165, 250, 0.72)",
+          },
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#60a5fa",
+            borderWidth: 2,
+          },
+          "&.Mui-disabled": {
+            backgroundColor: "rgba(15, 23, 42, 0.54)",
+          },
+          "& input::placeholder, & textarea::placeholder": {
+            color: "#cbd5e1",
+            opacity: 1,
+          },
+        },
+        input: {
+          color: "#f8fafc",
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: "#dbeafe",
+          "&.Mui-focused": {
+            color: "#93c5fd",
+          },
+          "&.Mui-error": {
+            color: "#fca5a5",
+          },
+        },
+      },
+    },
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          color: "#b6c2d2",
+        },
+      },
+    },
   },
 });
 
