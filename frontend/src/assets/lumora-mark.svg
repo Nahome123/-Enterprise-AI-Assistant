@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="lumora-mark-title">
+  <title id="lumora-mark-title">Lumora mark</title>
+  <defs>
+    <linearGradient id="lumora-primary" x1="31" y1="19" x2="91" y2="108" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22d3ee" />
+      <stop offset="0.53" stop-color="#1d4ed8" />
+      <stop offset="1" stop-color="#a855f7" />
+    </linearGradient>
+    <linearGradient id="lumora-orbit" x1="73" y1="25" x2="105" y2="101" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22d3ee" />
+      <stop offset="0.5" stop-color="#2563eb" />
+      <stop offset="1" stop-color="#a855f7" />
+    </linearGradient>
+    <filter id="lumora-glow" x="0" y="0" width="128" height="128" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="3.5" result="blur" />
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.04 0 0 0 0 0.44 0 0 0 0 1 0 0 0 0.48 0" />
+      <feBlend in="SourceGraphic" />
+    </filter>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="#020617" />
+  <g filter="url(#lumora-glow)">
+    <path
+      d="M36 28h12c8.3 0 15 6.7 15 15v48h30.6c2.6 0 5.1 1 6.9 2.9l13.7 13.7H48c-6.6 0-12-5.4-12-12V28Z"
+      fill="url(#lumora-primary)"
+    />
+    <path
+      d="M74.5 37.2c19.5-9.3 42.9-1 52.2 18.5"
+      fill="none"
+      stroke="url(#lumora-orbit)"
+      stroke-width="8"
+      stroke-linecap="square"
+      transform="rotate(15 100 62)"
+    />
+    <path
+      d="M117.6 69.4c3.1 13.4-.6 27.9-11.2 38.5"
+      fill="none"
+      stroke="url(#lumora-orbit)"
+      stroke-width="8"
+      stroke-linecap="square"
+    />
+    <circle cx="106" cy="58" r="8.5" fill="#22d3ee" />
+    <rect x="69" y="57" width="37" height="6.5" rx="3.25" fill="#64748b" opacity="0.72" />
+    <rect x="65" y="72" width="32" height="6.5" rx="3.25" fill="#64748b" opacity="0.72" />
+    <rect x="76" y="87" width="21" height="6.5" rx="3.25" fill="#64748b" opacity="0.72" />
+  </g>
+</svg>

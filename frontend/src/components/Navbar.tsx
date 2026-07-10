@@ -9,6 +9,8 @@ import {
 } from "@mui/material";
 import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
 
+import lumoraMark from "../assets/lumora-mark.svg";
+
 function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -39,21 +41,17 @@ function Navbar() {
       <Toolbar sx={{ minHeight: 72, gap: 2 }}>
         <Stack direction="row" spacing={1.5} sx={{ flexGrow: 1, alignItems: "center" }}>
           <Box
+            component="img"
+            src={lumoraMark}
+            alt="Lumora"
             sx={{
-              width: 42,
-              height: 42,
+              width: 48,
+              height: 48,
+              display: "block",
               borderRadius: 2,
-              bgcolor: "primary.main",
-              display: "grid",
-              placeItems: "center",
-              color: "#ffffff",
-              fontWeight: 900,
-              letterSpacing: 0,
-              boxShadow: "0 12px 24px rgba(11, 61, 145, 0.22)",
+              boxShadow: "0 14px 30px rgba(37, 99, 235, 0.2)",
             }}
-          >
-            L
-          </Box>
+          />
           <Box>
             <Typography variant="h6" sx={{ lineHeight: 1.1 }}>
               Lumora
