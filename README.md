@@ -44,13 +44,14 @@ npm run dev -- --host 127.0.0.1
 Deployment
 ----------
 
-Vercel should deploy the frontend from this repository using the root `vercel.json`.
+Vercel should deploy the `frontend` directory as the production web app.
 
 Recommended Vercel settings:
 
 - Framework preset: Vite
-- Build command: `cd frontend && npm install && npm run build`
-- Output directory: `frontend/dist`
+- Root directory: `frontend`
+- Build command: `npm run build`
+- Output directory: `dist`
 - Environment variable: `VITE_API_BASE_URL`
 
 Set `VITE_API_BASE_URL` to the public URL of the deployed FastAPI backend, for example:
