@@ -187,9 +187,14 @@ function Chat() {
                 label={prompt}
                 onClick={() => setQuestion(prompt)}
                 sx={{
-                  bgcolor: "rgba(11, 61, 145, 0.1)",
-                  color: "primary.dark",
-                  "&:hover": { bgcolor: "rgba(11, 61, 145, 0.16)" },
+                  bgcolor: "rgba(11, 61, 145, 0.42)",
+                  color: "#ffffff",
+                  border: "1px solid rgba(96, 165, 250, 0.44)",
+                  fontWeight: 800,
+                  "&:hover": {
+                    bgcolor: "rgba(37, 99, 235, 0.62)",
+                    borderColor: "rgba(147, 197, 253, 0.76)",
+                  },
                 }}
               />
             ))}
