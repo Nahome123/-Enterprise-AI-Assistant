@@ -15,6 +15,7 @@ import {
 
 import api from "../api/axios";
 import EnterpriseBackground from "../components/EnterpriseBackground";
+import type { AuthToken } from "../types/auth";
 
 interface ApiError {
   detail?: string | Array<{ msg?: string }>;
@@ -41,6 +42,7 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validateForm = () => {
@@ -69,6 +71,7 @@ function Register() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError("");
+    setSuccess("");
     const validationError = validateForm();
 
     if (validationError) {
@@ -79,12 +82,27 @@ function Register() {
     setIsSubmitting(true);
 
     try {
+      const normalizedName = fullName.trim().replace(/\s+/g, " ");
+      const normalizedEmail = email.trim().toLowerCase();
+
       await api.post("/auth/register", {
-        full_name: fullName.trim().replace(/\s+/g, " "),
-        email: email.trim().toLowerCase(),
+        full_name: normalizedName,
+        email: normalizedEmail,
         password,
       });
-      navigate("/");
+
+      setSuccess("Your account has been created successfully. Signing you in now...");
+      await new Promise((resolve) => {
+        window.setTimeout(resolve, 1200);
+      });
+
+      const response = await api.post<AuthToken>("/auth/login", {
+        email: normalizedEmail,
+        password,
+      });
+
+      localStorage.setItem("token", response.data.access_token);
+      navigate("/dashboard");
     } catch (requestError) {
       setError(getApiErrorMessage(requestError, "Registration failed. Check your details and try again."));
     } finally {
@@ -122,6 +140,7 @@ function Register() {
             </Typography>
           </Box>
           {error ? <Alert severity="error">{error}</Alert> : null}
+          {success ? <Alert severity="success">{success}</Alert> : null}
           <TextField
             label="Full name"
             value={fullName}

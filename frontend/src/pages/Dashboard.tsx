@@ -1,16 +1,22 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import {
   Alert,
   Box,
   Button,
   Chip,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   Grid,
   LinearProgress,
   Paper,
   Stack,
   Typography,
 } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
+import { useState } from "react";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 
 import api from "../api/axios";
 import type { AuthUser } from "../types/auth";
@@ -24,6 +30,9 @@ interface DocumentItem {
 }
 
 function Dashboard() {
+  const navigate = useNavigate();
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+
   const userQuery = useQuery({
     queryKey: ["current-user"],
     queryFn: async () => (await api.get<AuthUser>("/auth/me")).data,
@@ -40,6 +49,16 @@ function Dashboard() {
   const processingDocuments = documents.filter((document) => document.status === "processing").length;
   const readiness = documents.length ? Math.round((completedDocuments / documents.length) * 100) : 0;
   const recentDocuments = documents.slice(0, 5);
+
+  const deleteAccountMutation = useMutation({
+    mutationFn: async () => {
+      await api.delete("/auth/me");
+    },
+    onSuccess: () => {
+      localStorage.removeItem("token");
+      navigate("/");
+    },
+  });
 
   const cards = [
     { label: "Total documents", value: documents.length, tone: "#0b3d91" },
@@ -82,6 +101,9 @@ function Dashboard() {
       </Paper>
       {userQuery.isError || documentsQuery.isError ? (
         <Alert severity="error">Unable to load dashboard data.</Alert>
+      ) : null}
+      {deleteAccountMutation.isError ? (
+        <Alert severity="error">Unable to delete account. Please try again.</Alert>
       ) : null}
       <Grid container spacing={3}>
         {cards.map((card) => (
@@ -170,6 +192,45 @@ function Dashboard() {
           </Paper>
         </Grid>
       </Grid>
+      <Paper sx={{ p: 3, border: "1px solid rgba(220, 53, 69, 0.34)", bgcolor: "rgba(20, 0, 0, 0.72)" }}>
+        <Stack direction={{ xs: "column", md: "row" }} spacing={2} sx={{ alignItems: { md: "center" }, justifyContent: "space-between" }}>
+          <Box>
+            <Typography variant="h6">Account controls</Typography>
+            <Typography color="text.secondary">
+              Permanently delete your profile, documents, chat history, tickets, and audit entries.
+            </Typography>
+          </Box>
+          <Button
+            variant="outlined"
+            color="error"
+            onClick={() => setIsDeleteDialogOpen(true)}
+            sx={{ alignSelf: { xs: "flex-start", md: "center" } }}
+          >
+            Delete my account
+          </Button>
+        </Stack>
+      </Paper>
+      <Dialog open={isDeleteDialogOpen} onClose={() => setIsDeleteDialogOpen(false)}>
+        <DialogTitle>Delete account?</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            This permanently removes your Lumora account and all workspace data connected to it. This action cannot be undone.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setIsDeleteDialogOpen(false)} disabled={deleteAccountMutation.isPending}>
+            Cancel
+          </Button>
+          <Button
+            color="error"
+            variant="contained"
+            onClick={() => deleteAccountMutation.mutate()}
+            disabled={deleteAccountMutation.isPending}
+          >
+            {deleteAccountMutation.isPending ? "Deleting..." : "Delete account"}
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Stack>
   );
 }

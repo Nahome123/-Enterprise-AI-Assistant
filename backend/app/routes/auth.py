@@ -1,8 +1,9 @@
 import secrets
+import os
 from urllib.parse import urlencode
 
 import requests
-from fastapi import APIRouter, Depends, HTTPException, Request, status
+from fastapi import APIRouter, Depends, HTTPException, Request, Response, status
 from fastapi.responses import RedirectResponse
 from jose import JWTError, jwt
 from sqlalchemy.exc import IntegrityError
@@ -10,6 +11,13 @@ from sqlalchemy.orm import Session
 
 from app.config import settings
 from app.database import get_db
+from app.models.answer_source import AnswerSource
+from app.models.audit_log import AuditLog
+from app.models.chat_message import ChatMessage
+from app.models.chat_session import ChatSession
+from app.models.document import Document
+from app.models.document_chunk import DocumentChunk
+from app.models.ticket import Ticket
 from app.models.user import User
 from app.schemas.user_schema import UserCreate, UserLogin, UserResponse, TokenResponse
 from app.utils.security import hash_password, verify_password, create_access_token
@@ -236,6 +244,66 @@ def login_user(payload: UserLogin, db: Session = Depends(get_db)):
 @router.get("/me", response_model=UserResponse)
 def get_me(current_user: User = Depends(get_current_user)):
     return current_user
+
+
+@router.delete("/me", status_code=status.HTTP_204_NO_CONTENT)
+def delete_me(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    documents = db.query(Document).filter(Document.user_id == current_user.id).all()
+    document_ids = [document.id for document in documents]
+    file_paths = [document.file_path for document in documents if document.file_path]
+
+    if document_ids:
+        chunk_ids = [
+            chunk_id
+            for (chunk_id,) in db.query(DocumentChunk.id)
+            .filter(DocumentChunk.document_id.in_(document_ids))
+            .all()
+        ]
+
+        if chunk_ids:
+            db.query(AnswerSource).filter(AnswerSource.chunk_id.in_(chunk_ids)).delete(synchronize_session=False)
+
+        db.query(AnswerSource).filter(AnswerSource.document_id.in_(document_ids)).delete(synchronize_session=False)
+        db.query(DocumentChunk).filter(DocumentChunk.document_id.in_(document_ids)).delete(synchronize_session=False)
+
+    session_ids = [
+        session_id
+        for (session_id,) in db.query(ChatSession.id)
+        .filter(ChatSession.user_id == current_user.id)
+        .all()
+    ]
+
+    if session_ids:
+        message_ids = [
+            message_id
+            for (message_id,) in db.query(ChatMessage.id)
+            .filter(ChatMessage.session_id.in_(session_ids))
+            .all()
+        ]
+
+        if message_ids:
+            db.query(AnswerSource).filter(AnswerSource.chat_message_id.in_(message_ids)).delete(synchronize_session=False)
+
+        db.query(ChatMessage).filter(ChatMessage.session_id.in_(session_ids)).delete(synchronize_session=False)
+        db.query(ChatSession).filter(ChatSession.id.in_(session_ids)).delete(synchronize_session=False)
+
+    db.query(AuditLog).filter(AuditLog.user_id == current_user.id).delete(synchronize_session=False)
+    db.query(Ticket).filter(Ticket.user_id == current_user.id).delete(synchronize_session=False)
+    db.query(Document).filter(Document.user_id == current_user.id).delete(synchronize_session=False)
+    db.delete(current_user)
+    db.commit()
+
+    for file_path in file_paths:
+        if os.path.exists(file_path):
+            try:
+                os.remove(file_path)
+            except OSError:
+                pass
+
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
 @router.get("/oauth/{provider}/login")
