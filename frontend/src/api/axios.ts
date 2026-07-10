@@ -1,7 +1,20 @@
 import axios from "axios";
 
+export function normalizeApiBaseUrl(value?: string) {
+  const fallbackUrl = "http://127.0.0.1:8000";
+  const rawUrl = value?.trim() || fallbackUrl;
+
+  if (rawUrl.startsWith("http://") || rawUrl.startsWith("https://")) {
+    return rawUrl.replace(/\/+$/, "");
+  }
+
+  return `https://${rawUrl.replace(/^\/+|\/+$/g, "")}`;
+}
+
+export const apiBaseUrl = normalizeApiBaseUrl(import.meta.env.VITE_API_BASE_URL);
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL ?? "http://127.0.0.1:8000",
+  baseURL: apiBaseUrl,
 });
 
 api.interceptors.request.use((config) => {

@@ -28,7 +28,7 @@ import {
 } from "react-icons/bi";
 import { FaGithub, FaGoogle, FaMicrosoft } from "react-icons/fa";
 
-import api from "../api/axios";
+import api, { apiBaseUrl } from "../api/axios";
 import lumoraMark from "../assets/lumora-mark.svg";
 import EnterpriseBackground from "../components/EnterpriseBackground";
 import type { AuthToken } from "../types/auth";
@@ -95,7 +95,6 @@ const ragStoryText =
   "ChatGPT is excellent for general knowledge, but it doesn't know a company's internal documents, policies, APIs, or procedures. This application uses Retrieval-Augmented Generation to search the organization's own knowledge base and answer questions using only that trusted information. It also cites the exact documents it used, respects user permissions, and can integrate with internal systems like SharePoint, ServiceNow, or Jira. The result is an AI assistant that's tailored to the business rather than relying on general internet knowledge.";
 
 const trustedKnowledgeLayers = ["Policies", "APIs", "Procedures"];
-const apiBaseUrl = import.meta.env.VITE_API_BASE_URL ?? "http://127.0.0.1:8000";
 const oauthProviders = [
   { label: "Google", path: "google", icon: FaGoogle },
   { label: "Microsoft", path: "microsoft", icon: FaMicrosoft },
