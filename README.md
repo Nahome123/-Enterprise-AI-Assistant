@@ -76,8 +76,8 @@ Railway backend deployment:
 1. Create a new Railway project from the GitHub repository.
 2. Add a PostgreSQL database service in the same Railway project.
 3. Add a backend service from the repository.
-4. Set the backend service root directory to `backend`.
-5. If Railway asks for a config file path, use `/backend/railway.json`.
+4. Railway can deploy from the repository root using the root `railway.json` and `Dockerfile`.
+5. If you prefer an isolated backend service, set the backend service root directory to `backend` and use `/backend/railway.json`.
 6. Add the backend environment variables listed below.
 7. Generate a public domain for the backend service.
 8. Set `PUBLIC_BACKEND_URL` to that Railway backend URL.
