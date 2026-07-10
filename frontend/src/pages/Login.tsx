@@ -29,6 +29,7 @@ import {
 import { FaGithub, FaGoogle, FaMicrosoft } from "react-icons/fa";
 
 import api from "../api/axios";
+import lumoraMark from "../assets/lumora-mark.svg";
 import EnterpriseBackground from "../components/EnterpriseBackground";
 import type { AuthToken } from "../types/auth";
 
@@ -169,13 +170,49 @@ function Login() {
           }}
         >
           <Stack spacing={2.25} sx={{ height: "100%" }}>
-            <Box>
-              <Typography variant="overline" color="secondary.dark">
-                Lumora
-              </Typography>
-              <Typography variant="h4" sx={{ maxWidth: 560, fontWeight: 900, lineHeight: 1.08 }}>
-                Illuminate Enterprise Knowledge.
-              </Typography>
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: { xs: "72px 1fr", sm: "92px 1fr" },
+                gap: { xs: 1.75, sm: 2.25 },
+                alignItems: "center",
+              }}
+            >
+              <Box
+                component="img"
+                src={lumoraMark}
+                alt="Lumora"
+                sx={{
+                  width: { xs: 72, sm: 92 },
+                  height: { xs: 72, sm: 92 },
+                  borderRadius: 3,
+                  boxShadow: "0 22px 46px rgba(37, 99, 235, 0.24)",
+                }}
+              />
+              <Box sx={{ minWidth: 0 }}>
+                <Typography variant="overline" color="secondary.dark">
+                  Illuminate Enterprise Knowledge.
+                </Typography>
+                <Typography
+                  component="h1"
+                  sx={{
+                    fontSize: { xs: 42, sm: 62, md: 74 },
+                    fontWeight: 900,
+                    lineHeight: 0.9,
+                    color: "transparent",
+                    background: "linear-gradient(100deg, #e0f2fe 0%, #38bdf8 35%, #2563eb 68%, #a855f7 100%)",
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                    textShadow: "0 24px 60px rgba(37, 99, 235, 0.22)",
+                    wordBreak: "break-word",
+                  }}
+                >
+                  Lumora
+                </Typography>
+                <Typography sx={{ mt: 1, maxWidth: 560, color: "text.secondary", lineHeight: 1.55 }}>
+                  A private AI knowledge layer for documents, decisions, and operational answers with source citations.
+                </Typography>
+              </Box>
             </Box>
 
             <Box
@@ -611,6 +648,37 @@ function Login() {
         >
           <Stack spacing={3} sx={{ width: "100%", maxWidth: 430, mx: "auto" }}>
             <Box>
+              <Stack direction="row" spacing={1.5} sx={{ alignItems: "center", mb: 2 }}>
+                <Box
+                  component="img"
+                  src={lumoraMark}
+                  alt="Lumora"
+                  sx={{
+                    width: 54,
+                    height: 54,
+                    borderRadius: 2,
+                    boxShadow: "0 16px 34px rgba(37, 99, 235, 0.22)",
+                  }}
+                />
+                <Box>
+                  <Typography
+                    sx={{
+                      fontSize: 30,
+                      fontWeight: 900,
+                      lineHeight: 1,
+                      color: "transparent",
+                      background: "linear-gradient(100deg, #f8fafc, #38bdf8 48%, #a855f7)",
+                      backgroundClip: "text",
+                      WebkitBackgroundClip: "text",
+                    }}
+                  >
+                    Lumora
+                  </Typography>
+                  <Typography variant="caption" color="text.secondary">
+                    Illuminate Enterprise Knowledge.
+                  </Typography>
+                </Box>
+              </Stack>
               <Typography variant="overline" color="secondary.dark">
                 Secure workspace
               </Typography>
@@ -618,7 +686,7 @@ function Login() {
                 Sign in
               </Typography>
               <Typography color="text.secondary">
-                Continue to Lumora, your trusted enterprise knowledge hub.
+                Continue to your trusted enterprise knowledge hub.
               </Typography>
             </Box>
             {error ? <Alert severity="error">{error}</Alert> : null}
