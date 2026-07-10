@@ -6,6 +6,7 @@ import {
   Alert,
   Box,
   Button,
+  Chip,
   Link,
   Paper,
   Stack,
@@ -132,11 +133,15 @@ function Register() {
             <Typography variant="overline" color="secondary.dark">
               New workspace user
             </Typography>
+            <Stack direction="row" spacing={1} sx={{ mt: 1, mb: 1.5, flexWrap: "wrap" }}>
+              <Chip label="Free beta access" color="primary" size="small" sx={{ fontWeight: 850 }} />
+              <Chip label="Limited-time account" color="secondary" variant="outlined" size="small" />
+            </Stack>
             <Typography variant="h4" sx={{ fontWeight: 850 }}>
               Create account
             </Typography>
             <Typography color="text.secondary">
-              Start uploading and searching enterprise documents.
+              Start uploading and searching enterprise documents during the beta access period.
             </Typography>
           </Box>
           {error ? <Alert severity="error">{error}</Alert> : null}

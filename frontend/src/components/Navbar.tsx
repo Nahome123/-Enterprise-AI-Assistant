@@ -62,10 +62,16 @@ function Navbar() {
           </Box>
           <Stack direction="row" spacing={1} sx={{ display: { xs: "none", md: "flex" } }}>
             <Chip
-              label="Beta"
+              label="Free beta"
               size="small"
               color="primary"
               sx={{ fontWeight: 850 }}
+            />
+            <Chip
+              label="Limited time"
+              size="small"
+              variant="outlined"
+              color="secondary"
             />
             <Chip
               label="Private"

@@ -105,6 +105,9 @@ function Dashboard() {
       {deleteAccountMutation.isError ? (
         <Alert severity="error">Unable to delete account. Please try again.</Alert>
       ) : null}
+      <Alert severity="info" variant="outlined">
+        Free beta access is active on this account for a limited time while Lumora is being evaluated.
+      </Alert>
       <Grid container spacing={3}>
         {cards.map((card) => (
           <Grid key={card.label} size={{ xs: 12, sm: 6, lg: 3 }}>
