@@ -640,52 +640,21 @@ function Login() {
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-start",
-            p: { xs: 3, sm: 4 },
+            p: { xs: 2.5, sm: 3.25 },
             bgcolor: "rgba(0, 0, 0, 0.96)",
             backdropFilter: "blur(14px)",
             boxShadow: "0 24px 70px rgba(0, 0, 0, 0.26)",
           }}
         >
-          <Stack spacing={3} sx={{ width: "100%", maxWidth: 430, mx: "auto" }}>
+          <Stack spacing={2.35} sx={{ width: "100%", maxWidth: 430, mx: "auto" }}>
             <Box>
-              <Stack direction="row" spacing={1.5} sx={{ alignItems: "center", mb: 2 }}>
-                <Box
-                  component="img"
-                  src={lumoraMark}
-                  alt="Lumora"
-                  sx={{
-                    width: 54,
-                    height: 54,
-                    borderRadius: 2,
-                    boxShadow: "0 16px 34px rgba(37, 99, 235, 0.22)",
-                  }}
-                />
-                <Box>
-                  <Typography
-                    sx={{
-                      fontSize: 30,
-                      fontWeight: 900,
-                      lineHeight: 1,
-                      color: "transparent",
-                      background: "linear-gradient(100deg, #f8fafc, #38bdf8 48%, #a855f7)",
-                      backgroundClip: "text",
-                      WebkitBackgroundClip: "text",
-                    }}
-                  >
-                    Lumora
-                  </Typography>
-                  <Typography variant="caption" color="text.secondary">
-                    Illuminate Enterprise Knowledge.
-                  </Typography>
-                </Box>
-              </Stack>
               <Typography variant="overline" color="secondary.dark">
                 Secure workspace
               </Typography>
-              <Typography variant="h4" sx={{ fontWeight: 850 }}>
+              <Typography variant="h4" sx={{ fontWeight: 850, mt: 0.25 }}>
                 Sign in
               </Typography>
-              <Typography color="text.secondary">
+              <Typography color="text.secondary" sx={{ mt: 0.75 }}>
                 Continue to your trusted enterprise knowledge hub.
               </Typography>
             </Box>
