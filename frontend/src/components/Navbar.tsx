@@ -32,8 +32,8 @@ function Navbar() {
       elevation={0}
       sx={{
         backdropFilter: "blur(14px)",
-        bgcolor: "rgba(255, 255, 255, 0.92)",
-        borderBottom: "1px solid #e5e7eb",
+        bgcolor: "rgba(16, 27, 45, 0.9)",
+        borderBottom: "1px solid rgba(148, 163, 184, 0.18)",
       }}
     >
       <Toolbar sx={{ minHeight: 72, gap: 2 }}>
@@ -46,7 +46,7 @@ function Navbar() {
               bgcolor: "primary.main",
               display: "grid",
               placeItems: "center",
-              color: "background.paper",
+              color: "#ffffff",
               fontWeight: 900,
               letterSpacing: 0,
               boxShadow: "0 12px 24px rgba(11, 61, 145, 0.22)",

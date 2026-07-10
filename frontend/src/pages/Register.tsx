@@ -104,9 +104,9 @@ function Register() {
           width: "100%",
           maxWidth: 480,
           p: 4,
-          bgcolor: "rgba(255, 255, 255, 0.94)",
+          bgcolor: "rgba(16, 27, 45, 0.94)",
           backdropFilter: "blur(14px)",
-          boxShadow: "0 24px 70px rgba(31, 41, 55, 0.1)",
+          boxShadow: "0 24px 70px rgba(0, 0, 0, 0.26)",
         }}
       >
         <Stack spacing={3}>

@@ -155,9 +155,9 @@ function Login() {
             minHeight: { xs: "auto", md: 760 },
             p: { xs: 2.5, sm: 3.5, md: 4 },
             overflow: "hidden",
-            bgcolor: "rgba(255, 255, 255, 0.9)",
+            bgcolor: "rgba(16, 27, 45, 0.9)",
             backdropFilter: "blur(18px)",
-            boxShadow: "0 26px 80px rgba(31, 41, 55, 0.1)",
+            boxShadow: "0 26px 80px rgba(0, 0, 0, 0.26)",
           }}
         >
           <Stack spacing={2.25} sx={{ height: "100%" }}>
@@ -179,7 +179,7 @@ function Login() {
                 overflow: "hidden",
                 border: "1px solid rgba(11, 61, 145, 0.14)",
                 background:
-                  "radial-gradient(circle at 50% 42%, rgba(11, 61, 145, 0.16), transparent 34%), linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(242, 244, 247, 0.86))",
+                  "radial-gradient(circle at 50% 42%, rgba(11, 61, 145, 0.16), transparent 34%), linear-gradient(135deg, rgba(16, 27, 45, 0.96), rgba(15, 23, 42, 0.9))",
                 "@keyframes loginFloat": {
                   "0%, 100%": { transform: "translate3d(0, 0, 0) scale(1)", opacity: 0.84 },
                   "50%": { transform: "translate3d(0, -14px, 0) scale(1.03)", opacity: 1 },
@@ -227,7 +227,7 @@ function Login() {
                   p: 1.4,
                   color: "#ffffff",
                   background: "linear-gradient(145deg, rgba(31, 41, 55, 0.92), rgba(75, 85, 99, 0.88))",
-                  boxShadow: "18px 22px 42px rgba(31, 41, 55, 0.18)",
+                  boxShadow: "18px 22px 42px rgba(0, 0, 0, 0.32)",
                   transformStyle: "preserve-3d",
                   animation: "ragTilt 6s ease-in-out infinite",
                 }}
@@ -326,8 +326,8 @@ function Login() {
                     left: card.left,
                     width: { xs: 112, sm: 132 },
                     p: 1.4,
-                    bgcolor: "rgba(255, 255, 255, 0.9)",
-                    boxShadow: "0 16px 38px rgba(31, 41, 55, 0.1)",
+                    bgcolor: "rgba(16, 27, 45, 0.9)",
+                    boxShadow: "0 16px 38px rgba(0, 0, 0, 0.26)",
                     animation: `loginReveal 7s ease-in-out ${card.delay} infinite`,
                   }}
                 >
@@ -403,7 +403,7 @@ function Login() {
                   p: 1.5,
                   bgcolor: "rgba(31, 41, 55, 0.9)",
                   color: "#ffffff",
-                  boxShadow: "0 20px 50px rgba(31, 41, 55, 0.16)",
+                  boxShadow: "0 20px 50px rgba(0, 0, 0, 0.3)",
                   animation: "loginFloat 5.5s ease-in-out infinite",
                 }}
               >
@@ -414,7 +414,7 @@ function Login() {
                       Verified response
                     </Typography>
                   </Box>
-                  <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.82)" }}>
+                  <Typography variant="body2" sx={{ color: "rgba(16, 27, 45, 0.82)" }}>
                     Answers stay connected to the documents they came from.
                   </Typography>
                 </Stack>
@@ -489,7 +489,7 @@ function Login() {
               sx={{
                 p: 2,
                 borderRadius: 2,
-                bgcolor: "rgba(31, 41, 55, 0.035)",
+                bgcolor: "rgba(148, 163, 184, 0.06)",
                 border: "1px solid rgba(11, 61, 145, 0.12)",
               }}
             >
@@ -533,7 +533,7 @@ function Login() {
                           p: 1.2,
                           minHeight: 78,
                           borderRadius: 1.5,
-                          bgcolor: "rgba(255, 255, 255, 0.82)",
+                          bgcolor: "rgba(16, 27, 45, 0.82)",
                           border: "1px solid rgba(11, 61, 145, 0.08)",
                         }}
                       >
@@ -596,9 +596,9 @@ function Login() {
             flexDirection: "column",
             justifyContent: "flex-start",
             p: { xs: 3, sm: 4 },
-            bgcolor: "rgba(255, 255, 255, 0.96)",
+            bgcolor: "rgba(16, 27, 45, 0.96)",
             backdropFilter: "blur(14px)",
-            boxShadow: "0 24px 70px rgba(31, 41, 55, 0.1)",
+            boxShadow: "0 24px 70px rgba(0, 0, 0, 0.26)",
           }}
         >
           <Stack spacing={3} sx={{ width: "100%", maxWidth: 430, mx: "auto" }}>
@@ -647,5 +647,6 @@ function Login() {
 }
 
 export default Login;
+
 
 
