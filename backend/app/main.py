@@ -16,7 +16,7 @@ from app.routes import auth, documents, search, chat, tickets, transcriptions
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
-    title="Enterprise AI Knowledge Assistant",
+    title="Lumora",
     description="Backend API for document upload, semantic search, and AI-powered Q&A.",
     version="1.0.0"
 )

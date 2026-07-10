@@ -163,10 +163,10 @@ function Login() {
           <Stack spacing={2.25} sx={{ height: "100%" }}>
             <Box>
               <Typography variant="overline" color="secondary.dark">
-                Enterprise AI Knowledge Assistant
+                Lumora
               </Typography>
               <Typography variant="h4" sx={{ maxWidth: 560, fontWeight: 900, lineHeight: 1.08 }}>
-                Turn private documents into trusted answers.
+                Illuminate Enterprise Knowledge.
               </Typography>
             </Box>
 
@@ -610,7 +610,7 @@ function Login() {
                 Sign in
               </Typography>
               <Typography color="text.secondary">
-                Continue to your private document intelligence hub.
+                Continue to Lumora, your trusted enterprise knowledge hub.
               </Typography>
             </Box>
             {error ? <Alert severity="error">{error}</Alert> : null}

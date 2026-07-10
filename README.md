@@ -1,5 +1,7 @@
-Enterprise AI Knowledge Assistant
-=================================
+Lumora
+======
+
+Illuminate Enterprise Knowledge.
 
 Full-stack enterprise knowledge assistant with document upload, pgvector search, RAG chat with citations, authentication, ticket intelligence, and a React/Vite frontend.
 

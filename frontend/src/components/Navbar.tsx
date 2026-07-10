@@ -52,14 +52,14 @@ function Navbar() {
               boxShadow: "0 12px 24px rgba(11, 61, 145, 0.22)",
             }}
           >
-            AI
+            L
           </Box>
           <Box>
             <Typography variant="h6" sx={{ lineHeight: 1.1 }}>
-              Enterprise AI Assistant
+              Lumora
             </Typography>
             <Typography variant="caption" color="text.secondary">
-              Knowledge retrieval workspace
+              Illuminate Enterprise Knowledge.
             </Typography>
           </Box>
           <Chip
