@@ -7,6 +7,7 @@ import {
   Box,
   Button,
   Chip,
+  Divider,
   Link,
   Paper,
   Stack,
@@ -25,6 +26,7 @@ import {
   BiSearch,
   BiSolidQuoteAltLeft,
 } from "react-icons/bi";
+import { FaGithub, FaGoogle, FaMicrosoft } from "react-icons/fa";
 
 import api from "../api/axios";
 import EnterpriseBackground from "../components/EnterpriseBackground";
@@ -92,6 +94,12 @@ const ragStoryText =
   "ChatGPT is excellent for general knowledge, but it doesn't know a company's internal documents, policies, APIs, or procedures. This application uses Retrieval-Augmented Generation to search the organization's own knowledge base and answer questions using only that trusted information. It also cites the exact documents it used, respects user permissions, and can integrate with internal systems like SharePoint, ServiceNow, or Jira. The result is an AI assistant that's tailored to the business rather than relying on general internet knowledge.";
 
 const trustedKnowledgeLayers = ["Policies", "APIs", "Procedures"];
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL ?? "http://127.0.0.1:8000";
+const oauthProviders = [
+  { label: "Google", path: "google", icon: FaGoogle },
+  { label: "Microsoft", path: "microsoft", icon: FaMicrosoft },
+  { label: "GitHub", path: "github", icon: FaGithub },
+];
 
 function Login() {
   const navigate = useNavigate();
@@ -633,6 +641,44 @@ function Login() {
             <Button type="submit" variant="contained" size="large" disabled={isSubmitting}>
               {isSubmitting ? "Signing in..." : "Sign in"}
             </Button>
+            <Divider>
+              <Typography variant="caption" color="text.secondary">
+                or continue with
+              </Typography>
+            </Divider>
+            <Stack spacing={1.25}>
+              {oauthProviders.map((provider) => {
+                const Icon = provider.icon;
+
+                return (
+                  <Button
+                    key={provider.path}
+                    component="a"
+                    href={`${apiBaseUrl}/auth/oauth/${provider.path}/login`}
+                    variant="outlined"
+                    color="inherit"
+                    size="large"
+                    startIcon={<Icon />}
+                    sx={{
+                      justifyContent: "center",
+                      borderColor: "rgba(182, 194, 210, 0.32)",
+                      color: "text.primary",
+                      bgcolor: "rgba(0, 0, 0, 0.34)",
+                      "& .MuiButton-startIcon": {
+                        position: "absolute",
+                        left: 18,
+                      },
+                      "&:hover": {
+                        borderColor: "primary.light",
+                        bgcolor: "rgba(11, 61, 145, 0.16)",
+                      },
+                    }}
+                  >
+                    Continue with {provider.label}
+                  </Button>
+                );
+              })}
+            </Stack>
             <Typography variant="body2">
               Need an account?{" "}
               <Link component={RouterLink} to="/register">

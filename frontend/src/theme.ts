@@ -36,34 +36,33 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: [
-      "Ebrima",
-      "Segoe UI",
-      "Roboto",
-      "Arial",
-      "sans-serif",
+      "Geist Serif",
+      "Georgia",
+      "Times New Roman",
+      "serif",
     ].join(","),
     h1: {
-      fontFamily: 'Ebrima, "Segoe UI", Roboto, Arial, sans-serif',
+      fontFamily: '"Geist Serif", Georgia, "Times New Roman", serif',
       fontWeight: 900,
     },
     h2: {
-      fontFamily: 'Ebrima, "Segoe UI", Roboto, Arial, sans-serif',
+      fontFamily: '"Geist Serif", Georgia, "Times New Roman", serif',
       fontWeight: 900,
     },
     h3: {
-      fontFamily: 'Ebrima, "Segoe UI", Roboto, Arial, sans-serif',
+      fontFamily: '"Geist Serif", Georgia, "Times New Roman", serif',
       fontWeight: 900,
     },
     h4: {
-      fontFamily: 'Ebrima, "Segoe UI", Roboto, Arial, sans-serif',
+      fontFamily: '"Geist Serif", Georgia, "Times New Roman", serif',
       fontWeight: 900,
     },
     h5: {
-      fontFamily: 'Ebrima, "Segoe UI", Roboto, Arial, sans-serif',
+      fontFamily: '"Geist Serif", Georgia, "Times New Roman", serif',
       fontWeight: 900,
     },
     h6: {
-      fontFamily: 'Ebrima, "Segoe UI", Roboto, Arial, sans-serif',
+      fontFamily: '"Geist Serif", Georgia, "Times New Roman", serif',
       fontWeight: 900,
     },
     subtitle1: {
