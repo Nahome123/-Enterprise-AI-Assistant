@@ -50,3 +50,8 @@ app.include_router(transcriptions.router, prefix="/transcriptions", tags=["Trans
 @app.get("/")
 def health_check():
     return {"status": "running"}
+
+
+@app.get("/health")
+def health_check_detailed():
+    return {"status": "healthy"}
