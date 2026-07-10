@@ -181,7 +181,7 @@ function EnterpriseBackground() {
               minWidth: isLarge ? 220 : 168,
               p: isLarge ? 1.75 : 1.25,
               borderRadius: 2.5,
-              bgcolor: isLarge ? "rgba(16, 27, 45, 0.72)" : "rgba(16, 27, 45, 0.58)",
+              bgcolor: isLarge ? "rgba(0, 0, 0, 0.72)" : "rgba(0, 0, 0, 0.58)",
               border: "1px solid rgba(148, 163, 184, 0.16)",
               boxShadow: "0 24px 70px rgba(0, 0, 0, 0.24)",
               backdropFilter: "blur(10px)",
@@ -216,5 +216,6 @@ function EnterpriseBackground() {
 }
 
 export default EnterpriseBackground;
+
 
 

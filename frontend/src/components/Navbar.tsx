@@ -32,7 +32,7 @@ function Navbar() {
       elevation={0}
       sx={{
         backdropFilter: "blur(14px)",
-        bgcolor: "rgba(16, 27, 45, 0.9)",
+        bgcolor: "rgba(0, 0, 0, 0.9)",
         borderBottom: "1px solid rgba(148, 163, 184, 0.18)",
       }}
     >
@@ -99,5 +99,6 @@ function Navbar() {
 }
 
 export default Navbar;
+
 
 

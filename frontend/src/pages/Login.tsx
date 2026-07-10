@@ -155,7 +155,7 @@ function Login() {
             minHeight: { xs: "auto", md: 760 },
             p: { xs: 2.5, sm: 3.5, md: 4 },
             overflow: "hidden",
-            bgcolor: "rgba(16, 27, 45, 0.9)",
+            bgcolor: "rgba(0, 0, 0, 0.9)",
             backdropFilter: "blur(18px)",
             boxShadow: "0 26px 80px rgba(0, 0, 0, 0.26)",
           }}
@@ -179,7 +179,7 @@ function Login() {
                 overflow: "hidden",
                 border: "1px solid rgba(11, 61, 145, 0.14)",
                 background:
-                  "radial-gradient(circle at 50% 42%, rgba(11, 61, 145, 0.16), transparent 34%), linear-gradient(135deg, rgba(16, 27, 45, 0.96), rgba(15, 23, 42, 0.9))",
+                  "radial-gradient(circle at 50% 42%, rgba(11, 61, 145, 0.16), transparent 34%), linear-gradient(135deg, rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.9))",
                 "@keyframes loginFloat": {
                   "0%, 100%": { transform: "translate3d(0, 0, 0) scale(1)", opacity: 0.84 },
                   "50%": { transform: "translate3d(0, -14px, 0) scale(1.03)", opacity: 1 },
@@ -326,7 +326,7 @@ function Login() {
                     left: card.left,
                     width: { xs: 112, sm: 132 },
                     p: 1.4,
-                    bgcolor: "rgba(16, 27, 45, 0.9)",
+                    bgcolor: "rgba(0, 0, 0, 0.9)",
                     boxShadow: "0 16px 38px rgba(0, 0, 0, 0.26)",
                     animation: `loginReveal 7s ease-in-out ${card.delay} infinite`,
                   }}
@@ -414,7 +414,7 @@ function Login() {
                       Verified response
                     </Typography>
                   </Box>
-                  <Typography variant="body2" sx={{ color: "rgba(16, 27, 45, 0.82)" }}>
+                  <Typography variant="body2" sx={{ color: "rgba(248, 250, 252, 0.82)" }}>
                     Answers stay connected to the documents they came from.
                   </Typography>
                 </Stack>
@@ -533,7 +533,7 @@ function Login() {
                           p: 1.2,
                           minHeight: 78,
                           borderRadius: 1.5,
-                          bgcolor: "rgba(16, 27, 45, 0.82)",
+                          bgcolor: "rgba(5, 5, 5, 0.82)",
                           border: "1px solid rgba(11, 61, 145, 0.08)",
                         }}
                       >
@@ -596,7 +596,7 @@ function Login() {
             flexDirection: "column",
             justifyContent: "flex-start",
             p: { xs: 3, sm: 4 },
-            bgcolor: "rgba(16, 27, 45, 0.96)",
+            bgcolor: "rgba(0, 0, 0, 0.96)",
             backdropFilter: "blur(14px)",
             boxShadow: "0 24px 70px rgba(0, 0, 0, 0.26)",
           }}
@@ -647,6 +647,7 @@ function Login() {
 }
 
 export default Login;
+
 
 
 

@@ -53,7 +53,7 @@ function Dashboard() {
       <Paper
         sx={{
           p: { xs: 3, md: 4 },
-          bgcolor: "rgba(16, 27, 45, 0.92)",
+          bgcolor: "rgba(0, 0, 0, 0.92)",
           position: "relative",
           overflow: "hidden",
         }}
@@ -175,5 +175,6 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
 
 

@@ -14,8 +14,8 @@ const theme = createTheme({
       dark: "#005f63",
     },
     background: {
-      default: "#07111f",
-      paper: "#101b2d",
+      default: "#000000",
+      paper: "#050505",
     },
     text: {
       primary: "#f8fafc",
@@ -36,34 +36,34 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: [
-      "ADLaM Display",
+      "Ebrima",
       "Segoe UI",
       "Roboto",
       "Arial",
       "sans-serif",
     ].join(","),
     h1: {
-      fontFamily: '"ADLaM Display", "Segoe UI", Roboto, Arial, sans-serif',
+      fontFamily: 'Ebrima, "Segoe UI", Roboto, Arial, sans-serif',
       fontWeight: 900,
     },
     h2: {
-      fontFamily: '"ADLaM Display", "Segoe UI", Roboto, Arial, sans-serif',
+      fontFamily: 'Ebrima, "Segoe UI", Roboto, Arial, sans-serif',
       fontWeight: 900,
     },
     h3: {
-      fontFamily: '"ADLaM Display", "Segoe UI", Roboto, Arial, sans-serif',
+      fontFamily: 'Ebrima, "Segoe UI", Roboto, Arial, sans-serif',
       fontWeight: 900,
     },
     h4: {
-      fontFamily: '"ADLaM Display", "Segoe UI", Roboto, Arial, sans-serif',
+      fontFamily: 'Ebrima, "Segoe UI", Roboto, Arial, sans-serif',
       fontWeight: 900,
     },
     h5: {
-      fontFamily: '"ADLaM Display", "Segoe UI", Roboto, Arial, sans-serif',
+      fontFamily: 'Ebrima, "Segoe UI", Roboto, Arial, sans-serif',
       fontWeight: 900,
     },
     h6: {
-      fontFamily: '"ADLaM Display", "Segoe UI", Roboto, Arial, sans-serif',
+      fontFamily: 'Ebrima, "Segoe UI", Roboto, Arial, sans-serif',
       fontWeight: 900,
     },
     subtitle1: {
@@ -78,7 +78,7 @@ const theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          backgroundColor: "#07111f",
+          backgroundColor: "#000000",
         },
       },
     },
@@ -113,7 +113,7 @@ const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          backgroundColor: "rgba(7, 17, 31, 0.72)",
+          backgroundColor: "rgba(0, 0, 0, 0.72)",
           color: "#f8fafc",
           "& .MuiOutlinedInput-notchedOutline": {
             borderColor: "rgba(182, 194, 210, 0.36)",
@@ -126,7 +126,7 @@ const theme = createTheme({
             borderWidth: 2,
           },
           "&.Mui-disabled": {
-            backgroundColor: "rgba(15, 23, 42, 0.54)",
+            backgroundColor: "rgba(8, 8, 8, 0.72)",
           },
           "& input::placeholder, & textarea::placeholder": {
             color: "#cbd5e1",
