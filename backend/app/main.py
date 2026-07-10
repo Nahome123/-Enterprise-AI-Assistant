@@ -1,5 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy import text
+
+from app.config import settings
 from app.database import Base, engine
 
 from app.models.user import User
@@ -13,7 +16,15 @@ from app.models.audit_log import AuditLog
 
 from app.routes import auth, documents, search, chat, tickets, transcriptions
 
-Base.metadata.create_all(bind=engine)
+
+def init_database():
+    with engine.begin() as connection:
+        connection.execute(text("CREATE EXTENSION IF NOT EXISTS vector"))
+
+    Base.metadata.create_all(bind=engine)
+
+
+init_database()
 
 app = FastAPI(
     title="Lumora",
@@ -23,7 +34,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:5173", "http://localhost:5173"],
+    allow_origins=settings.cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
