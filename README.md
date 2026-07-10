@@ -67,10 +67,38 @@ The FastAPI backend requires PostgreSQL, pgvector, persistent uploads, and serve
 This repository includes:
 
 - `backend/Dockerfile` for the FastAPI API service
+- `backend/railway.json` for Railway backend deployment
 - `render.yaml` for a Render Blueprint with a web service, PostgreSQL database, and persistent upload disk
 - `frontend/vercel.json` for frontend SPA routing
 
-Render backend deployment:
+Railway backend deployment:
+
+1. Create a new Railway project from the GitHub repository.
+2. Add a PostgreSQL database service in the same Railway project.
+3. Add a backend service from the repository.
+4. Set the backend service root directory to `backend`.
+5. If Railway asks for a config file path, use `/backend/railway.json`.
+6. Add the backend environment variables listed below.
+7. Generate a public domain for the backend service.
+8. Set `PUBLIC_BACKEND_URL` to that Railway backend URL.
+9. Confirm the backend health check returns `{"status":"running"}`.
+
+Recommended Railway backend variables:
+
+```text
+DATABASE_URL=${{Postgres.DATABASE_URL}}
+OPENAI_API_KEY=replace-with-your-new-openai-key
+JWT_SECRET_KEY=replace-with-a-strong-random-secret-at-least-32-characters
+JWT_ALGORITHM=HS256
+ACCESS_TOKEN_EXPIRE_MINUTES=60
+UPLOAD_DIR=/app/uploads
+TRANSCRIPTION_MODEL=gpt-4o-mini-transcribe
+FRONTEND_URL=https://lumoradocs.org
+BACKEND_CORS_ORIGINS=https://lumoradocs.org,https://frontend-q0pvum5km-nahometeshe-1491s-projects.vercel.app
+PUBLIC_BACKEND_URL=https://your-railway-backend-url.up.railway.app
+```
+
+Render backend deployment, optional:
 
 1. Create a new Render Blueprint from the GitHub repository.
 2. Use the included `render.yaml`.
