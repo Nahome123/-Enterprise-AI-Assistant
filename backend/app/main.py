@@ -11,7 +11,7 @@ from app.models.answer_source import AnswerSource
 from app.models.ticket import Ticket
 from app.models.audit_log import AuditLog
 
-from app.routes import auth, documents, search, chat, tickets
+from app.routes import auth, documents, search, chat, tickets, transcriptions
 
 Base.metadata.create_all(bind=engine)
 
@@ -34,6 +34,7 @@ app.include_router(documents.router, prefix="/documents", tags=["Documents"])
 app.include_router(search.router, prefix="/search", tags=["Search"])
 app.include_router(chat.router, prefix="/chat", tags=["Chat"])
 app.include_router(tickets.router, prefix="/tickets", tags=["Tickets"])
+app.include_router(transcriptions.router, prefix="/transcriptions", tags=["Transcriptions"])
 
 @app.get("/")
 def health_check():

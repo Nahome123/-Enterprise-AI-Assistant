@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { FormEvent } from "react";
 import { useMutation } from "@tanstack/react-query";
 import {
@@ -13,6 +13,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { BiMicrophone, BiStopCircle } from "react-icons/bi";
 
 import api from "../api/axios";
 
@@ -28,6 +29,10 @@ interface ChatResponse {
   session_id: number;
   language: SupportedLanguage;
   sources: ChatSource[];
+}
+
+interface TranscriptionResponse {
+  text: string;
 }
 
 type SupportedLanguage =
@@ -57,6 +62,11 @@ function Chat() {
   const [question, setQuestion] = useState("");
   const [language, setLanguage] = useState<SupportedLanguage>("English");
   const [answer, setAnswer] = useState<ChatResponse | null>(null);
+  const [isRecording, setIsRecording] = useState(false);
+  const [recordingError, setRecordingError] = useState("");
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const audioChunksRef = useRef<Blob[]>([]);
+  const mediaStreamRef = useRef<MediaStream | null>(null);
   const suggestedQuestions = [
     "Summarize the newest uploaded document",
     "What risks or decisions are mentioned?",
@@ -73,6 +83,22 @@ function Chat() {
     onSuccess: (data) => setAnswer(data),
   });
 
+  const transcriptionMutation = useMutation({
+    mutationFn: async (audioFile: File) => {
+      const formData = new FormData();
+      formData.append("file", audioFile);
+
+      return (await api.post<TranscriptionResponse>("/transcriptions/", formData)).data;
+    },
+    onSuccess: (data) => {
+      setQuestion(data.text);
+      setRecordingError("");
+    },
+    onError: () => {
+      setRecordingError("Unable to transcribe audio. Check microphone permissions and backend OpenAI configuration.");
+    },
+  });
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -80,6 +106,66 @@ function Chat() {
       chatMutation.mutate(question.trim());
     }
   };
+
+  const stopMediaTracks = () => {
+    mediaStreamRef.current?.getTracks().forEach((track) => track.stop());
+    mediaStreamRef.current = null;
+  };
+
+  const startRecording = async () => {
+    setRecordingError("");
+
+    if (!navigator.mediaDevices?.getUserMedia || typeof MediaRecorder === "undefined") {
+      setRecordingError("Voice recording is not supported in this browser.");
+      return;
+    }
+
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const mimeType = MediaRecorder.isTypeSupported("audio/webm") ? "audio/webm" : "";
+      const recorder = new MediaRecorder(stream, mimeType ? { mimeType } : undefined);
+
+      audioChunksRef.current = [];
+      mediaStreamRef.current = stream;
+      mediaRecorderRef.current = recorder;
+
+      recorder.ondataavailable = (event) => {
+        if (event.data.size > 0) {
+          audioChunksRef.current.push(event.data);
+        }
+      };
+
+      recorder.onstop = () => {
+        const audioBlob = new Blob(audioChunksRef.current, { type: mimeType || "audio/webm" });
+        const audioFile = new File([audioBlob], "voice-question.webm", { type: audioBlob.type });
+
+        setIsRecording(false);
+        stopMediaTracks();
+
+        if (audioBlob.size === 0) {
+          setRecordingError("No audio was captured. Try recording again.");
+          return;
+        }
+
+        transcriptionMutation.mutate(audioFile);
+      };
+
+      recorder.start();
+      setIsRecording(true);
+    } catch {
+      stopMediaTracks();
+      setIsRecording(false);
+      setRecordingError("Microphone permission was denied or no microphone is available.");
+    }
+  };
+
+  const stopRecording = () => {
+    if (mediaRecorderRef.current?.state === "recording") {
+      mediaRecorderRef.current.stop();
+    }
+  };
+
+  useEffect(() => () => stopMediaTracks(), []);
 
   return (
     <Stack spacing={3}>
@@ -135,11 +221,24 @@ function Chat() {
             <Button type="submit" variant="contained" size="large" disabled={chatMutation.isPending || !question.trim()}>
               {chatMutation.isPending ? "Thinking..." : "Ask assistant"}
             </Button>
+            <Button
+              type="button"
+              variant={isRecording ? "contained" : "outlined"}
+              color={isRecording ? "error" : "primary"}
+              size="large"
+              startIcon={isRecording ? <BiStopCircle /> : <BiMicrophone />}
+              disabled={transcriptionMutation.isPending}
+              onClick={isRecording ? stopRecording : startRecording}
+            >
+              {isRecording ? "Stop recording" : transcriptionMutation.isPending ? "Transcribing..." : "Voice question"}
+            </Button>
             <Typography variant="body2" color="text.secondary">
-              Answers are limited to uploaded document context.
+              Record a question, review the transcript, then ask the assistant.
             </Typography>
           </Stack>
           {chatMutation.isError ? <Alert severity="error">Unable to generate an answer.</Alert> : null}
+          {recordingError ? <Alert severity="error">{recordingError}</Alert> : null}
+          {isRecording ? <Alert severity="info">Recording. Speak clearly, then stop to transcribe.</Alert> : null}
         </Stack>
       </Paper>
       {answer ? (

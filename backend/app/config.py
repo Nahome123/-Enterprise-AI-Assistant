@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     JWT_ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
     UPLOAD_DIR: str = "uploads"
+    TRANSCRIPTION_MODEL: str = "gpt-4o-mini-transcribe"
 
     @field_validator("JWT_SECRET_KEY")
     @classmethod
