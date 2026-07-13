@@ -176,19 +176,19 @@ function Tickets() {
   };
 
   return (
-    <Stack spacing={3}>
-      <Paper sx={{ p: { xs: 3, md: 4 } }}>
-        <Stack direction={{ xs: "column", lg: "row" }} spacing={3}>
+    <Stack spacing={{ xs: 2, md: 3 }}>
+      <Paper sx={{ p: { xs: 2, md: 4 } }}>
+        <Stack direction={{ xs: "column", lg: "row" }} spacing={{ xs: 2, md: 3 }}>
           <Box sx={{ flex: 1 }}>
             <Typography variant="overline" color="secondary.dark">
               Ticket intelligence
             </Typography>
-            <Typography variant="h4">Operations queue</Typography>
+            <Typography variant="h4" sx={{ fontSize: { xs: 30, sm: 38 } }}>Operations queue</Typography>
             <Typography color="text.secondary" sx={{ mt: 1, maxWidth: 760 }}>
               Capture support requests, classify the issue, predict priority, route ownership, and give teams a ready-to-edit response.
             </Typography>
           </Box>
-          <Grid container spacing={2} sx={{ minWidth: { lg: 520 } }}>
+          <Grid container spacing={1.5} sx={{ width: { xs: "100%", lg: "auto" }, minWidth: { lg: 520 } }}>
             {[
               ["Total", analytics?.total ?? 0],
               ["High priority", analytics?.high_priority ?? 0],
@@ -196,7 +196,7 @@ function Tickets() {
               ["Resolved rate", `${readiness}%`],
             ].map(([label, value]) => (
               <Grid key={label} size={{ xs: 6 }}>
-                <Paper sx={{ p: 2, bgcolor: "rgba(11, 61, 145, 0.06)" }}>
+                <Paper sx={{ p: { xs: 1.5, sm: 2 }, bgcolor: "rgba(11, 61, 145, 0.06)" }}>
                   <Typography variant="caption" color="text.secondary">
                     {label}
                   </Typography>
@@ -222,10 +222,10 @@ function Tickets() {
       </Tabs>
 
       {activeTab === 0 ? (
-        <Grid container spacing={3}>
+        <Grid container spacing={{ xs: 2, md: 3 }}>
           <Grid size={{ xs: 12, lg: 4 }}>
-            <Paper component="form" onSubmit={handleCreateTicket} sx={{ p: 3 }}>
-              <Stack spacing={2.5}>
+            <Paper component="form" onSubmit={handleCreateTicket} sx={{ p: { xs: 2, sm: 3 } }}>
+              <Stack spacing={{ xs: 2, sm: 2.5 }}>
                 <Box>
                   <Typography variant="h6">Create ticket</Typography>
                   <Typography variant="body2" color="text.secondary">
@@ -245,7 +245,7 @@ function Tickets() {
                   fullWidth
                   required
                 />
-                <Button type="submit" variant="contained" disabled={createTicketMutation.isPending}>
+                <Button type="submit" variant="contained" disabled={createTicketMutation.isPending} size="large">
                   {createTicketMutation.isPending ? "Classifying..." : "Create and route"}
                 </Button>
               </Stack>
@@ -254,13 +254,13 @@ function Tickets() {
           <Grid size={{ xs: 12, lg: 8 }}>
             <Stack spacing={2}>
               {tickets.map((ticket) => (
-                <Paper key={ticket.id} sx={{ p: 3 }}>
+                <Paper key={ticket.id} sx={{ p: { xs: 2, sm: 3 } }}>
                   <Stack spacing={2}>
                     <Stack direction={{ xs: "column", md: "row" }} spacing={2} sx={{ justifyContent: "space-between" }}>
                       <Box sx={{ minWidth: 0 }}>
                         <Typography variant="h6">{ticket.title}</Typography>
                         <Typography variant="body2" color="text.secondary">
-                          {ticket.customer_email ?? "No customer email"} · {new Date(ticket.created_at).toLocaleString()}
+                          {ticket.customer_email ?? "No customer email"} / {new Date(ticket.created_at).toLocaleString()}
                         </Typography>
                       </Box>
                       <Stack direction="row" sx={{ gap: 1, flexWrap: "wrap", alignItems: "center" }}>
@@ -281,7 +281,7 @@ function Tickets() {
                       label="Status"
                       value={ticket.status}
                       onChange={(event) => updateTicketMutation.mutate({ id: ticket.id, status: event.target.value })}
-                      sx={{ maxWidth: 220 }}
+                      sx={{ width: { xs: "100%", sm: 220 } }}
                     >
                       {statusOptions.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
@@ -299,9 +299,9 @@ function Tickets() {
       ) : null}
 
       {activeTab === 1 ? (
-        <Grid container spacing={3}>
+        <Grid container spacing={{ xs: 2, md: 3 }}>
           <Grid size={{ xs: 12, md: 5 }}>
-            <Paper sx={{ p: 3 }}>
+            <Paper sx={{ p: { xs: 2, sm: 3 } }}>
               <Stack spacing={2}>
                 <Typography variant="h6">Resolution health</Typography>
                 <LinearProgress value={readiness} variant="determinate" sx={{ height: 10, borderRadius: 99 }} />
@@ -313,7 +313,7 @@ function Tickets() {
             </Paper>
           </Grid>
           <Grid size={{ xs: 12, md: 7 }}>
-            <Paper sx={{ p: 3 }}>
+            <Paper sx={{ p: { xs: 2, sm: 3 } }}>
               <Stack spacing={2}>
                 <Typography variant="h6">Category distribution</Typography>
                 {Object.entries(analytics?.category_counts ?? {}).map(([category, count]) => (
@@ -329,9 +329,9 @@ function Tickets() {
       ) : null}
 
       {activeTab === 2 ? (
-        <Grid container spacing={3}>
+        <Grid container spacing={{ xs: 2, md: 3 }}>
           <Grid size={{ xs: 12, md: 5 }}>
-            <Paper sx={{ p: 3 }}>
+            <Paper sx={{ p: { xs: 2, sm: 3 } }}>
               <Stack spacing={2}>
                 <Typography variant="h6">Routing load</Typography>
                 {Object.entries(manager?.routing_load ?? {}).map(([team, count]) => (
@@ -344,19 +344,19 @@ function Tickets() {
             </Paper>
           </Grid>
           <Grid size={{ xs: 12, md: 7 }}>
-            <Paper sx={{ p: 3 }}>
+            <Paper sx={{ p: { xs: 2, sm: 3 } }}>
               <Stack spacing={2}>
                 <Typography variant="h6">Attention queue</Typography>
                 {manager?.attention_queue.map((ticket) => (
                   <Box key={ticket.id} sx={{ p: 2, borderRadius: 2, bgcolor: "rgba(157, 75, 60, 0.08)" }}>
-                    <Stack direction="row" sx={{ justifyContent: "space-between", gap: 2 }}>
-                      <Box>
+                    <Stack direction={{ xs: "column", sm: "row" }} sx={{ justifyContent: "space-between", gap: 1.5 }}>
+                      <Box sx={{ minWidth: 0 }}>
                         <Typography sx={{ fontWeight: 800 }}>{ticket.title}</Typography>
                         <Typography variant="body2" color="text.secondary">
-                          {ticket.category} · {ticket.routed_team}
+                          {ticket.category} / {ticket.routed_team}
                         </Typography>
                       </Box>
-                      <Chip label={ticket.priority} color="error" />
+                      <Chip label={ticket.priority} color="error" sx={{ alignSelf: { xs: "flex-start", sm: "center" } }} />
                     </Stack>
                   </Box>
                 ))}
@@ -368,7 +368,7 @@ function Tickets() {
       ) : null}
 
       {activeTab === 3 ? (
-        <Paper sx={{ p: 3 }}>
+        <Paper sx={{ p: { xs: 2, sm: 3 } }}>
           <Stack spacing={2}>
             <Typography variant="h6">Audit log</Typography>
             {auditLog.map((entry) => (

@@ -163,16 +163,16 @@ function Documents() {
   };
 
   return (
-    <Stack spacing={3}>
-      <Grid container spacing={3}>
+    <Stack spacing={{ xs: 2, md: 3 }}>
+      <Grid container spacing={{ xs: 2, md: 3 }}>
         <Grid size={{ xs: 12, md: 5 }}>
-          <Paper sx={{ p: 3, height: "100%" }}>
-            <Stack spacing={2.5}>
+          <Paper sx={{ p: { xs: 2, sm: 3 }, height: "100%" }}>
+            <Stack spacing={{ xs: 2, sm: 2.5 }}>
               <Box>
                 <Typography variant="overline" color="secondary.dark">
                   Ingestion
                 </Typography>
-                <Typography variant="h4">Documents</Typography>
+                <Typography variant="h4" sx={{ fontSize: { xs: 30, sm: 38 } }}>Documents</Typography>
                 <Typography color="text.secondary">
                   Upload files or paste text directly and track when it becomes searchable.
                 </Typography>
@@ -198,7 +198,7 @@ function Documents() {
                   component="label"
                   sx={{
                     display: "block",
-                    p: 3,
+                    p: { xs: 2, sm: 3 },
                     borderRadius: 2,
                     border: "1px dashed rgba(11, 61, 145, 0.36)",
                     bgcolor: "rgba(11, 61, 145, 0.06)",
@@ -276,7 +276,7 @@ function Documents() {
           </Paper>
         </Grid>
         <Grid size={{ xs: 12, md: 7 }}>
-          <Paper sx={{ p: 3, height: "100%" }}>
+          <Paper sx={{ p: { xs: 2, sm: 3 }, height: "100%" }}>
             <Stack spacing={2}>
               <Typography variant="h6">Library health</Typography>
               <Grid container spacing={2}>
@@ -310,7 +310,7 @@ function Documents() {
                   select
                   value={statusFilter}
                   onChange={(event) => setStatusFilter(event.target.value)}
-                  sx={{ minWidth: 180 }}
+                  sx={{ minWidth: { xs: "100%", sm: 180 } }}
                 >
                   <MenuItem value="all">All</MenuItem>
                   <MenuItem value="completed">Completed</MenuItem>
@@ -322,9 +322,9 @@ function Documents() {
           </Paper>
         </Grid>
       </Grid>
-      <Paper sx={{ overflow: "hidden" }}>
+      <Paper sx={{ overflowX: "auto" }}>
         {documentsQuery.isError ? <Alert severity="error">Unable to load documents.</Alert> : null}
-        <Table>
+        <Table sx={{ minWidth: 720 }}>
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>

@@ -15,7 +15,15 @@ function Layout() {
     >
       <EnterpriseBackground />
       <Navbar />
-      <Container maxWidth="xl" sx={{ py: { xs: 3, md: 4 }, position: "relative", zIndex: 1 }}>
+      <Container
+        maxWidth="xl"
+        sx={{
+          px: { xs: 1.5, sm: 3 },
+          py: { xs: 2, md: 4 },
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
         <Outlet />
       </Container>
       <LegalFooter />

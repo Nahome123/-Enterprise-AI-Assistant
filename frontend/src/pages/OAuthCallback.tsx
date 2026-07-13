@@ -26,11 +26,11 @@ function OAuthCallback() {
         alignItems: "center",
         justifyContent: "center",
         bgcolor: "background.default",
-        p: 2,
+        p: { xs: 1.25, sm: 2 },
       }}
     >
       <EnterpriseBackground />
-      <Paper sx={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 440, my: "auto", p: 4 }}>
+      <Paper sx={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 440, my: "auto", p: { xs: 2.5, sm: 4 } }}>
         <Stack spacing={2.5}>
           <Typography variant="h5">Completing sign in</Typography>
           {token ? (

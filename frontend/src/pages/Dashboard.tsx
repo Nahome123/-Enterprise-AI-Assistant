@@ -68,32 +68,32 @@ function Dashboard() {
   ];
 
   return (
-    <Stack spacing={3}>
+    <Stack spacing={{ xs: 2, md: 3 }}>
       <Paper
         sx={{
-          p: { xs: 3, md: 4 },
+          p: { xs: 2, md: 4 },
           bgcolor: "rgba(0, 0, 0, 0.92)",
           position: "relative",
           overflow: "hidden",
         }}
       >
-        <Stack direction={{ xs: "column", md: "row" }} spacing={3} sx={{ alignItems: { md: "center" } }}>
+        <Stack direction={{ xs: "column", md: "row" }} spacing={{ xs: 2, md: 3 }} sx={{ alignItems: { md: "center" } }}>
           <Box sx={{ flex: 1 }}>
             <Typography variant="overline" color="secondary.dark">
               Workspace overview
             </Typography>
-            <Typography variant="h4" sx={{ mt: 0.5 }}>
+            <Typography variant="h4" sx={{ mt: 0.5, fontSize: { xs: 30, sm: 38 } }}>
               {userQuery.data ? `Welcome, ${userQuery.data.full_name}` : "Dashboard"}
             </Typography>
             <Typography color="text.secondary" sx={{ maxWidth: 680, mt: 1 }}>
               Track ingestion health, review your searchable knowledge base, and jump into grounded Q&A with source citations.
             </Typography>
           </Box>
-          <Stack direction="row" spacing={1}>
-            <Button component={RouterLink} to="/documents" variant="contained">
+          <Stack direction={{ xs: "column", sm: "row" }} spacing={1} sx={{ width: { xs: "100%", sm: "auto" } }}>
+            <Button component={RouterLink} to="/documents" variant="contained" sx={{ width: { xs: "100%", sm: "auto" } }}>
               Upload documents
             </Button>
-            <Button component={RouterLink} to="/chat" variant="outlined" color="secondary">
+            <Button component={RouterLink} to="/chat" variant="outlined" color="secondary" sx={{ width: { xs: "100%", sm: "auto" } }}>
               Ask questions
             </Button>
           </Stack>
@@ -113,7 +113,7 @@ function Dashboard() {
           <Grid key={card.label} size={{ xs: 12, sm: 6, lg: 3 }}>
             <Paper
               sx={{
-                p: 3,
+                p: { xs: 2, sm: 3 },
                 height: "100%",
                 transition: "transform 160ms ease, box-shadow 160ms ease",
                 "&:hover": {
@@ -125,7 +125,7 @@ function Dashboard() {
               <Stack spacing={1.5}>
                 <Box sx={{ width: 38, height: 4, borderRadius: 99, bgcolor: card.tone }} />
                 <Typography color="text.secondary">{card.label}</Typography>
-                <Typography variant="h3" sx={{ fontWeight: 850, color: card.tone }}>
+                <Typography variant="h3" sx={{ fontWeight: 850, color: card.tone, fontSize: { xs: 38, sm: 48 } }}>
                   {card.value}
                 </Typography>
               </Stack>
@@ -135,7 +135,7 @@ function Dashboard() {
       </Grid>
       <Grid container spacing={3}>
         <Grid size={{ xs: 12, md: 5 }}>
-          <Paper sx={{ p: 3, height: "100%" }}>
+          <Paper sx={{ p: { xs: 2, sm: 3 }, height: "100%" }}>
             <Stack spacing={2.5}>
               <Box>
                 <Typography variant="h6">Search readiness</Typography>
@@ -156,9 +156,9 @@ function Dashboard() {
           </Paper>
         </Grid>
         <Grid size={{ xs: 12, md: 7 }}>
-          <Paper sx={{ p: 3 }}>
+          <Paper sx={{ p: { xs: 2, sm: 3 } }}>
             <Stack spacing={2}>
-              <Stack direction="row" sx={{ justifyContent: "space-between", alignItems: "center" }}>
+              <Stack direction="row" sx={{ justifyContent: "space-between", alignItems: "center", gap: 1 }}>
                 <Typography variant="h6">Recent documents</Typography>
                 <Button component={RouterLink} to="/documents" size="small">
                   View all
@@ -195,7 +195,7 @@ function Dashboard() {
           </Paper>
         </Grid>
       </Grid>
-      <Paper sx={{ p: 3, border: "1px solid rgba(220, 53, 69, 0.34)", bgcolor: "rgba(20, 0, 0, 0.72)" }}>
+      <Paper sx={{ p: { xs: 2, sm: 3 }, border: "1px solid rgba(220, 53, 69, 0.34)", bgcolor: "rgba(20, 0, 0, 0.72)" }}>
         <Stack direction={{ xs: "column", md: "row" }} spacing={2} sx={{ alignItems: { md: "center" }, justifyContent: "space-between" }}>
           <Box>
             <Typography variant="h6">Account controls</Typography>
@@ -207,7 +207,7 @@ function Dashboard() {
             variant="outlined"
             color="error"
             onClick={() => setIsDeleteDialogOpen(true)}
-            sx={{ alignSelf: { xs: "flex-start", md: "center" } }}
+            sx={{ alignSelf: { xs: "stretch", sm: "flex-start", md: "center" } }}
           >
             Delete my account
           </Button>

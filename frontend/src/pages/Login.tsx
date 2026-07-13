@@ -142,8 +142,8 @@ function Login() {
         flexDirection: "column",
         alignItems: "center",
         bgcolor: "background.default",
-        px: { xs: 2, md: 4 },
-        py: { xs: 3, md: 5 },
+        px: { xs: 1.25, sm: 2, md: 4 },
+        py: { xs: 1.5, sm: 3, md: 5 },
         overflowX: "hidden",
       }}
     >
@@ -156,28 +156,28 @@ function Login() {
           maxWidth: 1240,
           flex: 1,
           display: "grid",
-          gridTemplateColumns: { xs: "1fr", md: "minmax(0, 1.18fr) minmax(360px, 0.82fr)" },
-          gap: { xs: 3, md: 4 },
+          gridTemplateColumns: { xs: "1fr", lg: "minmax(0, 1.18fr) minmax(360px, 0.82fr)" },
+          gap: { xs: 1.75, sm: 3, md: 4 },
           alignItems: "stretch",
           my: "auto",
         }}
       >
         <Paper
           sx={{
-            minHeight: { xs: "auto", md: 760 },
-            p: { xs: 2.5, sm: 3.5, md: 4 },
+            minHeight: { xs: "auto", lg: 760 },
+            p: { xs: 1.75, sm: 3, md: 4 },
             overflow: "hidden",
             bgcolor: "rgba(0, 0, 0, 0.9)",
             backdropFilter: "blur(18px)",
             boxShadow: "0 26px 80px rgba(0, 0, 0, 0.26)",
           }}
         >
-          <Stack spacing={2.25} sx={{ height: "100%" }}>
+          <Stack spacing={{ xs: 1.5, sm: 2.25 }} sx={{ height: "100%" }}>
             <Box
               sx={{
                 display: "grid",
-                gridTemplateColumns: { xs: "72px 1fr", sm: "92px 1fr" },
-                gap: { xs: 1.75, sm: 2.25 },
+                gridTemplateColumns: { xs: "56px 1fr", sm: "92px 1fr" },
+                gap: { xs: 1.25, sm: 2.25 },
                 alignItems: "center",
               }}
             >
@@ -186,9 +186,9 @@ function Login() {
                 src={lumoraMark}
                 alt="Lumora"
                 sx={{
-                  width: { xs: 72, sm: 92 },
-                  height: { xs: 72, sm: 92 },
-                  borderRadius: 3,
+                  width: { xs: 56, sm: 92 },
+                  height: { xs: 56, sm: 92 },
+                  borderRadius: { xs: 2, sm: 3 },
                   boxShadow: "0 22px 46px rgba(37, 99, 235, 0.24)",
                 }}
               />
@@ -199,7 +199,7 @@ function Login() {
                 <Typography
                   component="h1"
                   sx={{
-                    fontSize: { xs: 42, sm: 62, md: 74 },
+                    fontSize: { xs: 36, sm: 62, md: 74 },
                     fontWeight: 900,
                     lineHeight: 0.9,
                     color: "transparent",
@@ -212,7 +212,7 @@ function Login() {
                 >
                   Lumora
                 </Typography>
-                <Typography sx={{ mt: 1, maxWidth: 560, color: "text.secondary", lineHeight: 1.55 }}>
+                <Typography sx={{ mt: { xs: 0.5, sm: 1 }, maxWidth: 560, color: "text.secondary", lineHeight: 1.55 }}>
                   A private AI knowledge layer for documents, decisions, and operational answers with source citations.
                 </Typography>
               </Box>
@@ -222,7 +222,7 @@ function Login() {
               sx={{
                 position: "relative",
                 flex: "0 0 auto",
-                minHeight: { xs: 300, sm: 330, md: 340 },
+                minHeight: { xs: 230, sm: 300, md: 340 },
                 borderRadius: 2,
                 overflow: "hidden",
                 border: "1px solid rgba(11, 61, 145, 0.14)",
@@ -267,10 +267,10 @@ function Login() {
               <Box
                 sx={{
                   position: "absolute",
-                  left: { xs: 16, sm: 28 },
-                  top: { xs: 18, sm: 28 },
-                  width: { xs: 118, sm: 150 },
-                  height: { xs: 92, sm: 112 },
+                  left: { xs: 10, sm: 28 },
+                  top: { xs: 12, sm: 28 },
+                  width: { xs: 100, sm: 150 },
+                  height: { xs: 78, sm: 112 },
                   borderRadius: 3,
                   p: 1.4,
                   color: "#ffffff",
@@ -372,8 +372,8 @@ function Login() {
                     position: "absolute",
                     top: card.top,
                     left: card.left,
-                    width: { xs: 112, sm: 132 },
-                    p: 1.4,
+                      width: { xs: 96, sm: 132 },
+                    p: { xs: 1, sm: 1.4 },
                     bgcolor: "rgba(0, 0, 0, 0.9)",
                     boxShadow: "0 16px 38px rgba(0, 0, 0, 0.26)",
                     animation: `loginReveal 7s ease-in-out ${card.delay} infinite`,
@@ -420,8 +420,8 @@ function Login() {
                   top: "50%",
                   left: "50%",
                   transform: "translate(-50%, -50%)",
-                  width: { xs: 148, sm: 178 },
-                  height: { xs: 148, sm: 178 },
+                  width: { xs: 118, sm: 178 },
+                  height: { xs: 118, sm: 178 },
                   borderRadius: "50%",
                   display: "grid",
                   placeItems: "center",
@@ -432,7 +432,7 @@ function Login() {
                 }}
               >
                 <Stack spacing={0.5} sx={{ alignItems: "center", textAlign: "center" }}>
-                  <BiBrain size={42} />
+                  <BiBrain size={34} />
                   <Typography variant="button" sx={{ color: "inherit", lineHeight: 1.1 }}>
                     AI Answer
                   </Typography>
@@ -447,8 +447,8 @@ function Login() {
                   position: "absolute",
                   left: { xs: "10%", sm: "14%" },
                   right: { xs: "10%", sm: "14%" },
-                  bottom: { xs: 22, sm: 28 },
-                  p: 1.5,
+                  bottom: { xs: 14, sm: 28 },
+                  p: { xs: 1.15, sm: 1.5 },
                   bgcolor: "rgba(31, 41, 55, 0.9)",
                   color: "#ffffff",
                   boxShadow: "0 20px 50px rgba(0, 0, 0, 0.3)",
@@ -471,7 +471,7 @@ function Login() {
 
             <Box
               sx={{
-                p: { xs: 2, md: 2.5 },
+                p: { xs: 1.5, md: 2.5 },
                 borderRadius: 2,
                 bgcolor: "rgba(11, 61, 145, 0.045)",
                 border: "1px solid rgba(11, 61, 145, 0.12)",
@@ -484,7 +484,7 @@ function Login() {
                   <Chip label="Trusted sources" color="secondary" variant="outlined" size="small" />
                   <Chip label="Permissions aware" variant="outlined" size="small" />
                 </Stack>
-                <Typography sx={{ color: "text.primary", lineHeight: 1.65 }}>
+                <Typography sx={{ color: "text.primary", lineHeight: 1.6, fontSize: { xs: 14, sm: 16 } }}>
                   {ragStoryText}
                 </Typography>
               </Stack>
@@ -536,7 +536,7 @@ function Login() {
 
             <Box
               sx={{
-                p: 2,
+                p: { xs: 1.5, sm: 2 },
                 borderRadius: 2,
                 bgcolor: "rgba(148, 163, 184, 0.06)",
                 border: "1px solid rgba(11, 61, 145, 0.12)",
@@ -640,22 +640,22 @@ function Login() {
           component="form"
           onSubmit={handleSubmit}
           sx={{
-            alignSelf: { xs: "stretch", md: "start" },
+            alignSelf: { xs: "stretch", lg: "start" },
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-start",
-            p: { xs: 2.5, sm: 3.25 },
+            p: { xs: 1.75, sm: 3.25 },
             bgcolor: "rgba(0, 0, 0, 0.96)",
             backdropFilter: "blur(14px)",
             boxShadow: "0 24px 70px rgba(0, 0, 0, 0.26)",
           }}
         >
-          <Stack spacing={2.35} sx={{ width: "100%", maxWidth: 430, mx: "auto" }}>
+          <Stack spacing={{ xs: 1.6, sm: 2.35 }} sx={{ width: "100%", maxWidth: 430, mx: "auto" }}>
             <Box>
               <Typography variant="overline" color="secondary.dark">
                 Secure workspace
               </Typography>
-              <Typography variant="h4" sx={{ fontWeight: 850, mt: 0.25 }}>
+              <Typography variant="h4" sx={{ fontWeight: 850, mt: 0.25, fontSize: { xs: 30, sm: 38 } }}>
                 Sign in
               </Typography>
               <Typography color="text.secondary" sx={{ mt: 0.75 }}>
@@ -702,12 +702,13 @@ function Login() {
                     startIcon={<Icon />}
                     sx={{
                       justifyContent: "center",
+                      minHeight: 46,
                       borderColor: "rgba(182, 194, 210, 0.32)",
                       color: "text.primary",
                       bgcolor: "rgba(0, 0, 0, 0.34)",
                       "& .MuiButton-startIcon": {
                         position: "absolute",
-                        left: 18,
+                        left: { xs: 12, sm: 18 },
                       },
                       "&:hover": {
                         borderColor: "primary.light",

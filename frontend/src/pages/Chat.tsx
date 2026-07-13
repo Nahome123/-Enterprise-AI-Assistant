@@ -168,14 +168,14 @@ function Chat() {
   useEffect(() => () => stopMediaTracks(), []);
 
   return (
-    <Stack spacing={3}>
-      <Paper component="form" onSubmit={handleSubmit} sx={{ p: { xs: 3, md: 4 } }}>
-        <Stack spacing={3}>
+    <Stack spacing={{ xs: 2, md: 3 }}>
+      <Paper component="form" onSubmit={handleSubmit} sx={{ p: { xs: 2, md: 4 } }}>
+        <Stack spacing={{ xs: 2, md: 3 }}>
           <Box>
             <Typography variant="overline" color="secondary.dark">
               Grounded Q&A
             </Typography>
-            <Typography variant="h4">Chat with your documents</Typography>
+            <Typography variant="h4" sx={{ fontSize: { xs: 30, sm: 38 } }}>Chat with your documents</Typography>
             <Typography color="text.secondary" sx={{ mt: 1, maxWidth: 720 }}>
               Ask focused questions and review the document chunks used to generate each answer.
             </Typography>
@@ -223,7 +223,13 @@ function Chat() {
             </TextField>
           </Stack>
           <Stack direction={{ xs: "column", sm: "row" }} spacing={2} sx={{ alignItems: { sm: "center" } }}>
-            <Button type="submit" variant="contained" size="large" disabled={chatMutation.isPending || !question.trim()}>
+            <Button
+              type="submit"
+              variant="contained"
+              size="large"
+              disabled={chatMutation.isPending || !question.trim()}
+              sx={{ width: { xs: "100%", sm: "auto" } }}
+            >
               {chatMutation.isPending ? "Thinking..." : "Ask assistant"}
             </Button>
             <Button
@@ -234,6 +240,7 @@ function Chat() {
               startIcon={isRecording ? <BiStopCircle /> : <BiMicrophone />}
               disabled={transcriptionMutation.isPending}
               onClick={isRecording ? stopRecording : startRecording}
+              sx={{ width: { xs: "100%", sm: "auto" } }}
             >
               {isRecording ? "Stop recording" : transcriptionMutation.isPending ? "Transcribing..." : "Voice question"}
             </Button>
@@ -247,8 +254,8 @@ function Chat() {
         </Stack>
       </Paper>
       {answer ? (
-        <Paper sx={{ p: { xs: 3, md: 4 } }}>
-          <Stack spacing={3}>
+        <Paper sx={{ p: { xs: 2, md: 4 } }}>
+          <Stack spacing={{ xs: 2, md: 3 }}>
             <Stack direction={{ xs: "column", md: "row" }} spacing={2} sx={{ justifyContent: "space-between" }}>
               <Box>
                 <Typography variant="overline" color="secondary.dark">
@@ -263,7 +270,7 @@ function Chat() {
             </Stack>
             <Box
               sx={{
-                p: 3,
+                p: { xs: 2, sm: 3 },
                 borderRadius: 2,
                 bgcolor: "rgba(11, 61, 145, 0.06)",
                 border: "1px solid rgba(11, 61, 145, 0.12)",

@@ -83,14 +83,23 @@ function LegalPage({ type }: LegalPageProps) {
   return (
     <Box sx={{ minHeight: "100vh", bgcolor: "background.default", display: "flex", flexDirection: "column" }}>
       <EnterpriseBackground />
-      <Container maxWidth="md" sx={{ position: "relative", zIndex: 1, py: { xs: 4, md: 7 }, flex: 1 }}>
-        <Paper sx={{ p: { xs: 3, md: 5 }, bgcolor: "rgba(0, 0, 0, 0.92)" }}>
+      <Container
+        maxWidth="md"
+        sx={{
+          position: "relative",
+          zIndex: 1,
+          px: { xs: 1.5, sm: 3 },
+          py: { xs: 2, md: 7 },
+          flex: 1,
+        }}
+      >
+        <Paper sx={{ p: { xs: 2, sm: 3, md: 5 }, bgcolor: "rgba(0, 0, 0, 0.92)" }}>
           <Stack spacing={3}>
             <Box>
               <Typography variant="overline" color="secondary.dark">
                 Lumora legal
               </Typography>
-              <Typography variant="h3" sx={{ mt: 0.5 }}>
+              <Typography variant="h3" sx={{ mt: 0.5, fontSize: { xs: 32, sm: 48 } }}>
                 {content.title}
               </Typography>
               <Typography color="text.secondary" sx={{ mt: 1 }}>

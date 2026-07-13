@@ -121,7 +121,7 @@ function Register() {
         alignItems: "center",
         justifyContent: "center",
         bgcolor: "background.default",
-        p: 2,
+        p: { xs: 1.25, sm: 2 },
       }}
     >
       <EnterpriseBackground />
@@ -134,13 +134,13 @@ function Register() {
           width: "100%",
           maxWidth: 480,
           my: "auto",
-          p: 4,
+          p: { xs: 2, sm: 4 },
           bgcolor: "rgba(0, 0, 0, 0.94)",
           backdropFilter: "blur(14px)",
           boxShadow: "0 24px 70px rgba(0, 0, 0, 0.26)",
         }}
       >
-        <Stack spacing={3}>
+        <Stack spacing={{ xs: 2, sm: 3 }}>
           <Box>
             <Typography variant="overline" color="secondary.dark">
               New workspace user
@@ -152,7 +152,7 @@ function Register() {
             <Typography variant="h4" sx={{ fontWeight: 850 }}>
               Create account
             </Typography>
-            <Typography color="text.secondary">
+            <Typography color="text.secondary" sx={{ lineHeight: 1.55 }}>
               Start uploading and searching enterprise documents during the beta access period.
             </Typography>
           </Box>
