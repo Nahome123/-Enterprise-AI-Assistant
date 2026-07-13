@@ -93,6 +93,7 @@ JWT_ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=60
 UPLOAD_DIR=/app/uploads
 TRANSCRIPTION_MODEL=gpt-4o-mini-transcribe
+IMAGE_OCR_MODEL=gpt-4.1-mini
 FRONTEND_URL=https://lumoradocs.org
 BACKEND_CORS_ORIGINS=https://lumoradocs.org,https://frontend-q0pvum5km-nahometeshe-1491s-projects.vercel.app
 PUBLIC_BACKEND_URL=https://your-railway-backend-url.up.railway.app
@@ -154,6 +155,17 @@ CREATE EXTENSION IF NOT EXISTS vector;
 
 If your database provider does not allow that command, enable `pgvector` from the provider dashboard or SQL console before starting the API.
 
+Image OCR Uploads
+-----------------
+
+The document upload flow supports PDF, TXT, DOCX, PNG, JPG, JPEG, WEBP, TIF, and TIFF files. Image uploads are sent to the configured OpenAI vision model for OCR, then the extracted text is chunked, embedded, and stored in pgvector like other documents.
+
+Configure the OCR model with:
+
+```text
+IMAGE_OCR_MODEL=gpt-4.1-mini
+```
+
 Required backend environment variables:
 
 ```text
@@ -163,6 +175,8 @@ JWT_SECRET_KEY
 JWT_ALGORITHM
 ACCESS_TOKEN_EXPIRE_MINUTES
 UPLOAD_DIR
+TRANSCRIPTION_MODEL
+IMAGE_OCR_MODEL
 FRONTEND_URL
 BACKEND_CORS_ORIGINS
 PUBLIC_BACKEND_URL

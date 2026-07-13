@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
     UPLOAD_DIR: str = "uploads"
     TRANSCRIPTION_MODEL: str = "gpt-4o-mini-transcribe"
+    IMAGE_OCR_MODEL: str = "gpt-4.1-mini"
     FRONTEND_URL: str = "http://127.0.0.1:5173"
     BACKEND_CORS_ORIGINS: str = "http://127.0.0.1:5173,http://localhost:5173"
     PUBLIC_BACKEND_URL: Optional[str] = None

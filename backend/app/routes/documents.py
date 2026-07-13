@@ -20,7 +20,7 @@ from app.services.embedding_service import create_embedding
 
 router = APIRouter()
 
-ALLOWED_TYPES = ["pdf", "txt", "docx"]
+ALLOWED_TYPES = ["pdf", "txt", "docx", "png", "jpg", "jpeg", "webp", "tif", "tiff"]
 
 def get_file_extension(filename: str) -> str:
     return Path(filename).suffix.lstrip(".").lower()

@@ -174,7 +174,7 @@ function Documents() {
                 </Typography>
                 <Typography variant="h4" sx={{ fontSize: { xs: 30, sm: 38 } }}>Documents</Typography>
                 <Typography color="text.secondary">
-                  Upload files or paste text directly and track when it becomes searchable.
+                  Upload files, images, or paste text directly and track when it becomes searchable.
                 </Typography>
               </Box>
               <ToggleButtonGroup
@@ -210,7 +210,7 @@ function Documents() {
                     },
                   }}
                 >
-                  <input hidden type="file" accept=".pdf,.txt,.docx" onChange={handleFileChange} />
+                  <input hidden type="file" accept=".pdf,.txt,.docx,.png,.jpg,.jpeg,.webp,.tif,.tiff" onChange={handleFileChange} />
                   <Stack spacing={1}>
                     <Typography sx={{ fontWeight: 800 }}>
                       {selectedFile ? selectedFile.name : "Choose a document"}
@@ -218,7 +218,10 @@ function Documents() {
                     <Typography variant="body2" color="text.secondary">
                       {selectedFile
                         ? `${(selectedFile.size / 1024).toFixed(1)} KB selected`
-                        : "PDF, TXT, and DOCX are supported."}
+                        : "PDF, TXT, DOCX, PNG, JPG, WEBP, and TIFF are supported."}
+                    </Typography>
+                    <Typography variant="caption" color="text.secondary">
+                      Image uploads are OCR processed before search indexing.
                     </Typography>
                   </Stack>
                 </Box>
