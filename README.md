@@ -96,7 +96,47 @@ TRANSCRIPTION_MODEL=gpt-4o-mini-transcribe
 FRONTEND_URL=https://lumoradocs.org
 BACKEND_CORS_ORIGINS=https://lumoradocs.org,https://frontend-q0pvum5km-nahometeshe-1491s-projects.vercel.app
 PUBLIC_BACKEND_URL=https://your-railway-backend-url.up.railway.app
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+MICROSOFT_CLIENT_ID=
+MICROSOFT_CLIENT_SECRET=
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
 ```
+
+OAuth Sign-In Setup
+-------------------
+
+The sign-in page supports Google, Microsoft, and GitHub OAuth. Create one OAuth app in each provider dashboard, then add the generated client ID and secret to the Railway backend service variables.
+
+Use your real Railway backend URL anywhere this guide shows:
+
+```text
+https://your-railway-backend-url.up.railway.app
+```
+
+Provider callback URLs:
+
+```text
+Google:    https://your-railway-backend-url.up.railway.app/auth/oauth/google/callback
+Microsoft: https://your-railway-backend-url.up.railway.app/auth/oauth/microsoft/callback
+GitHub:    https://your-railway-backend-url.up.railway.app/auth/oauth/github/callback
+```
+
+Railway backend variables:
+
+```text
+FRONTEND_URL=https://lumoradocs.org
+PUBLIC_BACKEND_URL=https://your-railway-backend-url.up.railway.app
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+MICROSOFT_CLIENT_ID=your-microsoft-application-client-id
+MICROSOFT_CLIENT_SECRET=your-microsoft-client-secret-value
+GITHUB_CLIENT_ID=your-github-client-id
+GITHUB_CLIENT_SECRET=your-github-client-secret
+```
+
+After adding or changing these variables, redeploy the Railway backend. Then test each provider from the Lumora sign-in page.
 
 Render backend deployment, optional:
 

@@ -149,7 +149,13 @@ def fetch_oauth_profile(provider: str, oauth_provider: dict, access_token: str) 
 
 
 def get_or_create_oauth_user(db: Session, provider: str, profile: dict) -> User:
-    email = (profile.get("email") or profile.get("preferred_username") or "").strip().lower()
+    email = (
+        profile.get("email")
+        or profile.get("preferred_username")
+        or profile.get("userPrincipalName")
+        or profile.get("mail")
+        or ""
+    ).strip().lower()
     full_name = profile.get("name") or profile.get("login") or email.split("@")[0]
 
     if not email:
