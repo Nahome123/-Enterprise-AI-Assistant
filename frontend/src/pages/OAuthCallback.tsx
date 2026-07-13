@@ -3,6 +3,7 @@ import { Link as RouterLink, useNavigate, useSearchParams } from "react-router-d
 import { Alert, Box, Button, Paper, Stack, Typography } from "@mui/material";
 
 import EnterpriseBackground from "../components/EnterpriseBackground";
+import LegalFooter from "../components/LegalFooter";
 
 function OAuthCallback() {
   const navigate = useNavigate();
@@ -17,9 +18,19 @@ function OAuthCallback() {
   }, [navigate, token]);
 
   return (
-    <Box sx={{ minHeight: "100vh", display: "grid", placeItems: "center", bgcolor: "background.default", p: 2 }}>
+    <Box
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        bgcolor: "background.default",
+        p: 2,
+      }}
+    >
       <EnterpriseBackground />
-      <Paper sx={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 440, p: 4 }}>
+      <Paper sx={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 440, my: "auto", p: 4 }}>
         <Stack spacing={2.5}>
           <Typography variant="h5">Completing sign in</Typography>
           {token ? (
@@ -34,6 +45,7 @@ function OAuthCallback() {
           )}
         </Stack>
       </Paper>
+      <LegalFooter />
     </Box>
   );
 }

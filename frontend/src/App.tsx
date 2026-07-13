@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import Documents from "./pages/Documents";
 import Chat from "./pages/Chat";
 import Tickets from "./pages/Tickets";
+import LegalPage from "./pages/LegalPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
 
@@ -16,6 +17,8 @@ function App() {
             <Route path="/" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/oauth/callback" element={<OAuthCallback />} />
+            <Route path="/privacy" element={<LegalPage type="privacy" />} />
+            <Route path="/terms" element={<LegalPage type="terms" />} />
             <Route element={<ProtectedRoute />}>
                 <Route element={<Layout />}>
                     <Route path="/dashboard" element={<Dashboard />} />

@@ -2,6 +2,7 @@ import { Box, Container } from "@mui/material";
 import { Outlet } from "react-router-dom";
 
 import EnterpriseBackground from "./EnterpriseBackground";
+import LegalFooter from "./LegalFooter";
 import Navbar from "./Navbar";
 
 function Layout() {
@@ -17,6 +18,7 @@ function Layout() {
       <Container maxWidth="xl" sx={{ py: { xs: 3, md: 4 }, position: "relative", zIndex: 1 }}>
         <Outlet />
       </Container>
+      <LegalFooter />
     </Box>
   );
 }

@@ -31,6 +31,7 @@ import { FaGithub, FaGoogle, FaMicrosoft } from "react-icons/fa";
 import api, { apiBaseUrl } from "../api/axios";
 import lumoraMark from "../assets/lumora-mark.svg";
 import EnterpriseBackground from "../components/EnterpriseBackground";
+import LegalFooter from "../components/LegalFooter";
 import type { AuthToken } from "../types/auth";
 
 interface ApiError {
@@ -137,8 +138,9 @@ function Login() {
     <Box
       sx={{
         minHeight: "100vh",
-        display: "grid",
-        placeItems: "center",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
         bgcolor: "background.default",
         px: { xs: 2, md: 4 },
         py: { xs: 3, md: 5 },
@@ -152,10 +154,12 @@ function Login() {
           zIndex: 1,
           width: "100%",
           maxWidth: 1240,
+          flex: 1,
           display: "grid",
           gridTemplateColumns: { xs: "1fr", md: "minmax(0, 1.18fr) minmax(360px, 0.82fr)" },
           gap: { xs: 3, md: 4 },
           alignItems: "stretch",
+          my: "auto",
         }}
       >
         <Paper
@@ -725,6 +729,7 @@ function Login() {
           </Stack>
         </Paper>
       </Box>
+      <LegalFooter />
     </Box>
   );
 }

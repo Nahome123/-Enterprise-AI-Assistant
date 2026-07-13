@@ -16,6 +16,7 @@ import {
 
 import api from "../api/axios";
 import EnterpriseBackground from "../components/EnterpriseBackground";
+import LegalFooter from "../components/LegalFooter";
 import type { AuthToken } from "../types/auth";
 
 interface ApiError {
@@ -112,7 +113,17 @@ function Register() {
   };
 
   return (
-    <Box sx={{ minHeight: "100vh", display: "grid", placeItems: "center", bgcolor: "background.default", p: 2 }}>
+    <Box
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        bgcolor: "background.default",
+        p: 2,
+      }}
+    >
       <EnterpriseBackground />
       <Paper
         component="form"
@@ -122,6 +133,7 @@ function Register() {
           zIndex: 1,
           width: "100%",
           maxWidth: 480,
+          my: "auto",
           p: 4,
           bgcolor: "rgba(0, 0, 0, 0.94)",
           backdropFilter: "blur(14px)",
@@ -183,6 +195,7 @@ function Register() {
           </Typography>
         </Stack>
       </Paper>
+      <LegalFooter />
     </Box>
   );
 }
